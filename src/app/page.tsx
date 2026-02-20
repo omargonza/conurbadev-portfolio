@@ -125,28 +125,44 @@ function MagneticButton(props: MagneticButtonProps) {
     };
   }, [href]);
 
-  const common = {
-    className,
-    style: { translateX: xy.x, translateY: xy.y } as React.CSSProperties,
-    transition: { type: 'spring', stiffness: 380, damping: 26 },
-    onClick,
-    'aria-label': ariaLabel,
-  };
+  const motionStyle = { translateX: xy.x, translateY: xy.y } as React.CSSProperties;
+
+  // 👇 TIP CLAVE: literal "spring" (no string suelto)
+  const motionTransition = { type: 'spring' as const, stiffness: 380, damping: 26 };
 
   if (href) {
     return (
-      <motion.a ref={refA} href={href} target={target} rel={rel} {...common}>
+      <motion.a
+        ref={refA}
+        href={href}
+        target={target}
+        rel={rel}
+        onClick={onClick}
+        aria-label={ariaLabel}
+        className={className}
+        style={motionStyle}
+        transition={motionTransition}
+      >
         {children}
       </motion.a>
     );
   }
 
   return (
-    <motion.button ref={refB} type="button" {...common}>
+    <motion.button
+      ref={refB}
+      type="button"
+      onClick={onClick}
+      aria-label={ariaLabel}
+      className={className}
+      style={motionStyle}
+      transition={motionTransition}
+    >
       {children}
     </motion.button>
   );
 }
+
 
 function IconChip({ icon: Icon, title, value }: { icon: LucideIcon; title: string; value: string }) {
   return (
