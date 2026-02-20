@@ -95,23 +95,28 @@ type MagneticButtonProps = {
   ariaLabel?: string;
 };
 
-function MagneticButton(props: MagneticButtonProps) {
-  const { className, href, children, target, rel, onClick, ariaLabel } = props;
-
+function MagneticButton({
+  className,
+  children,
+  href,
+  target,
+  rel,
+  onClick,
+  ariaLabel,
+}: MagneticButtonProps) {
   const refA = useRef<HTMLAnchorElement | null>(null);
   const refB = useRef<HTMLButtonElement | null>(null);
 
   const [xy, setXy] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const el: HTMLElement | null = (href ? refA.current : refB.current) as HTMLElement | null;
+    const el = (href ? refA.current : refB.current) as HTMLElement | null;
     if (!el) return;
 
-    const onMove = (e: Event) => {
-      const me = e as MouseEvent;
+    const onMove = (e: MouseEvent) => {
       const rect = el.getBoundingClientRect();
-      const dx = me.clientX - (rect.left + rect.width / 2);
-      const dy = me.clientY - (rect.top + rect.height / 2);
+      const dx = e.clientX - (rect.left + rect.width / 2);
+      const dy = e.clientY - (rect.top + rect.height / 2);
       setXy({ x: clamp(dx * 0.10, -10, 10), y: clamp(dy * 0.10, -10, 10) });
     };
 
@@ -126,8 +131,6 @@ function MagneticButton(props: MagneticButtonProps) {
   }, [href]);
 
   const motionStyle = { translateX: xy.x, translateY: xy.y } as React.CSSProperties;
-
-  // 👇 TIP CLAVE: literal "spring" (no string suelto)
   const motionTransition = { type: 'spring' as const, stiffness: 380, damping: 26 };
 
   if (href) {
@@ -162,6 +165,7 @@ function MagneticButton(props: MagneticButtonProps) {
     </motion.button>
   );
 }
+
 
 
 function IconChip({ icon: Icon, title, value }: { icon: LucideIcon; title: string; value: string }) {

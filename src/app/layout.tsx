@@ -4,7 +4,7 @@ import "./globals.css";
 const SITE_NAME = "conurbaDEV — Portfolio";
 const DESCRIPTION =
   "conurbaDEV (Omar Gonzalo Martínez). Backend Python/Django: APIs, datos, auth, performance, PDFs y deploy. Freelance remoto.";
-const BASE_URL = "https://conurbadev-portfolio.vercel.app"; // ← CAMBIAR cuando tengas dominio propio
+const BASE_URL = "https://conurbadev-portfolio.vercel.app"; 
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
