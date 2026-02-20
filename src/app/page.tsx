@@ -319,6 +319,10 @@ function Gallery({
 /* =========================
    Página
 ========================= */
+
+/* =========================
+   Página
+========================= */
 export default function Page() {
   const mailto = `mailto:${EMAIL}?subject=${encodeURIComponent(`[Portfolio] ${BRAND}`)}`;
 
