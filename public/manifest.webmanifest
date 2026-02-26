@@ -1,0 +1,27 @@
+{
+  "name": "conurbaDEV — Portfolio",
+  "short_name": "conurbaDEV",
+  "description": "Portfolio de Gonza Martínez (conurbaDEV). Backend Python/Django: APIs, datos, auth, performance, PDFs y deploy.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#07070a",
+  "theme_color": "#07070a",
+  "lang": "es-AR",
+  "orientation": "portrait",
+  "categories": ["business", "productivity", "developer", "technology"],
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
