@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const SITE_NAME = "conurbaDEV — Portfolio";
+const SITE_NAME = "Hermit — Portfolio";
 const DESCRIPTION =
-  "conurbaDEV (Omar Gonzalo Martínez). Backend Python/Django: APIs, datos, auth, performance, PDFs y deploy. Freelance remoto.";
+  "Hermit — Portfolio de desarrollo full stack orientado a sistemas operativos, mantenimiento, trazabilidad, dashboards, e-commerce y herramientas web para procesos reales.";
 
 // ✅ URL robusta (local / preview / prod)
 const BASE_URL =
@@ -25,18 +25,18 @@ export const metadata: Metadata = {
 
   title: {
     default: SITE_NAME,
-    template: "%s · conurbaDEV",
+    template: "%s · Hermit",
   },
   description: DESCRIPTION,
 
-  applicationName: "conurbaDEV Portfolio",
-  authors: [{ name: "Gonza Martínez", url: "https://github.com/omargonza" }],
-  creator: "Gonza Martínez",
-  publisher: "conurbaDEV",
+  applicationName: "Hermit Portfolio",
+  authors: [{ name: "Gonzalo Martínez", url: "https://github.com/omargonza" }],
+  creator: "Gonzalo Martínez",
+  publisher: "Hermit",
   category: "technology",
 
   keywords: [
-    "conurbadev",
+    "hermit",
     "portfolio",
     "backend",
     "python",
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
         url: "/og.jpg",
         width: 1200,
         height: 630,
-        alt: "conurbaDEV — Portfolio",
+        alt: "Hermit — Portfolio",
       },
     ],
   },

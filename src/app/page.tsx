@@ -28,11 +28,11 @@ import {
 } from "lucide-react";
 
 /* =========================
-   Identidad (conurbaDEV)
+   Identidad (Hermit)
 ========================= */
-const BRAND = "conurbaDEV";
+const BRAND = "Hermit";
 const NOMBRE = "Gonza Martínez";
-const ROL = "Backend Python/Django (Junior) · Sistemas para operación real";
+const ROL = "Full Stack Developer · Sistemas para operación real";
 const UBICACION = "Buenos Aires, AR · Remoto";
 
 const EMAIL = "gonzamartinez1081@gmail.com";
@@ -442,7 +442,7 @@ function Gallery({
               <span className="text-white/75">{x.label}</span>
               <span className="inline-flex items-center gap-2 text-white/50">
                 <span className="h-1.5 w-1.5 rounded-full bg-[rgba(225,16,45,.95)]" />
-                conurba
+                Hermit
               </span>
             </div>
           </motion.button>
@@ -1000,7 +1000,7 @@ export default function Page() {
             <div className="relative h-9 w-9 overflow-hidden rounded-xl border border-white/10 bg-white/[0.06] transition group-hover:border-white/20">
               <Image
                 src="/brand/conurbadev-logo-transparent.png"
-                alt="Logo conurvaDEV"
+                alt="Logo Hermit"
                 fill
                 sizes="36px"
                 className="object-contain"
@@ -1013,7 +1013,7 @@ export default function Page() {
 
             <div className="leading-tight">
               <div className="text-sm font-semibold">
-                conurba<span className="text-[rgba(225,16,45,1)]">DEV</span>
+                 Hermit
               </div>
               <div className="text-xs text-white/55">{ROL}</div>
             </div>
@@ -1087,12 +1087,12 @@ export default function Page() {
                   variants={item}
                   className="mt-4 max-w-2xl text-[15px] leading-7 text-white/72"
                 >
-                  Soy {NOMBRE}. Desarrollo backend con criterio (APIs, datos,
-                  autenticación, performance y reportes) y frontend cuando el
-                  proyecto lo necesita. Mi diferencial es la experiencia
-                  operativa real en industria: pienso en trazabilidad,
-                  historial, evidencias y procesos claros para que el sistema se
-                  use en campo sin fricción.
+                   Soy {NOMBRE}. Desarrollo sistemas web para mantenimiento,
+                   trazabilidad, dashboards, e-commerce y herramientas
+                   internas pensadas para uso real. Mi diferencial es la
+                   experiencia operativa en industria: pienso en trazabilidad,
+                   historial, evidencias y procesos claros para que el sistema se
+                   use en campo sin fricción.
                 </motion.p>
                 <motion.div
                   variants={item}

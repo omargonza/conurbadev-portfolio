@@ -1,7 +1,7 @@
 {
-  "name": "conurbaDEV — Portfolio",
-  "short_name": "conurbaDEV",
-  "description": "Portfolio de Gonza Martínez (conurbaDEV). Backend Python/Django: APIs, datos, auth, performance, PDFs y deploy.",
+  "name": "Hermit — Portfolio",
+  "short_name": "Hermit",
+  "description": "Portfolio de Gonzalo Martínez (Hermit). Desarrollo full stack orientado a sistemas operativos, mantenimiento, trazabilidad, dashboards, e-commerce y herramientas web para procesos reales.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
