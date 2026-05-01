@@ -15,15 +15,14 @@ import {
   ExternalLink,
   Mail,
   Linkedin,
-  Download,
   ArrowUpRight,
-  Sparkles,
   MapPin,
+  Database,
   Code2,
   Layers,
-  ShieldCheck,
-  Database,
   Wrench,
+  ShieldCheck,
+  Download,
   Factory,
 } from "lucide-react";
 
@@ -31,7 +30,6 @@ import {
    Identidad (Hermit)
 ========================= */
 const BRAND = "Hermit";
-const NOMBRE = "Gonza Martínez";
 const ROL = "Full Stack Developer · Sistemas para operación real";
 const UBICACION = "Buenos Aires, AR · Remoto";
 
@@ -240,27 +238,6 @@ function MagneticButton({
   );
 }
 
-function IconChip({
-  icon: Icon,
-  title,
-  value,
-}: {
-  icon: LucideIcon;
-  title: string;
-  value: string;
-}) {
-  return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-[0_10px_30px_rgba(0,0,0,.35)]">
-      <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-white/50">
-        <Icon className="h-4 w-4 text-white/45" />
-        {title}
-      </div>
-      <div className="mt-2 text-sm font-medium text-white/90">{value}</div>
-      <div className="mt-3 h-[2px] w-10 rounded-full bg-[rgba(225,16,45,.95)]" />
-    </div>
-  );
-}
-
 function SectionDivider() {
   return (
     <div className="mx-auto mt-12 h-px w-full max-w-6xl bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -278,17 +255,17 @@ const Label = ({ children }: { children: React.ReactNode }) => (
 
 const Bullet = ({ children }: { children: React.ReactNode }) => (
   <li className="flex gap-2">
-    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[rgba(225,16,45,.95)]" />
+    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[rgba(200,195,184,.95)]" />
     <span>{children}</span>
   </li>
 );
 
 function SkillGroup({ icon: Icon, title, items, note }: SkillCard) {
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-5 shadow-[0_18px_55px_rgba(0,0,0,.55)]">
+    <div className="relative overflow-hidden rounded-3xl border border-[rgba(242,239,231,0.12)] bg-[#111116] p-5 shadow-[0_24px_80px_rgba(0,0,0,.65)] ring-1 ring-[rgba(242,239,231,0.06)]">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-white/[0.06] blur-3xl" />
-        <div className="absolute -left-24 top-16 h-64 w-64 rounded-full bg-[rgba(225,16,45,.14)] blur-3xl" />
+        <div className="absolute -left-24 top-16 h-64 w-64 rounded-full bg-[rgba(200,195,184,.14)] blur-3xl" />
       </div>
 
       <div className="relative">
@@ -377,6 +354,9 @@ function Lightbox({
 /* =========================
    Gallery con spotlight + click
 ========================= */
+/* =========================
+   Gallery premium showcase
+========================= */
 function Gallery({
   items,
   brandAccent = true,
@@ -388,26 +368,27 @@ function Gallery({
 }) {
   const wrapRef = useRef<HTMLDivElement | null>(null);
   useMouseSpotlight(wrapRef);
+
   return (
     <div
       ref={wrapRef}
-      className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-4"
+      className="relative overflow-hidden rounded-2xl border border-[rgba(242,239,231,.10)] bg-[#08080B] p-3 shadow-[inset_0_1px_0_rgba(242,239,231,.06)] ring-1 ring-inset ring-[rgba(200,195,184,.06)]"
       style={{
         backgroundImage: `
-          radial-gradient(650px 260px at var(--mx, 50%) var(--my, 20%),
-            rgba(225,16,45,.16),
-            transparent 60%),
-          radial-gradient(900px 420px at 50% 0%,
-            rgba(255,255,255,.06),
-            transparent 55%)
+          radial-gradient(720px 280px at var(--mx, 50%) var(--my, 20%),
+            rgba(200,195,184,.10),
+            transparent 62%),
+          linear-gradient(180deg, rgba(242,239,231,.035), rgba(0,0,0,.08))
         `,
       }}
     >
-      <div className="mb-3 flex items-center justify-between">
-        <div className="text-xs uppercase tracking-widest text-white/55">
+      <div className="mb-3 flex items-center justify-between px-1">
+        <div className="text-[11px] uppercase tracking-[0.18em] text-white/48">
           Capturas
         </div>
-        <div className="text-[11px] text-white/45">mobile · tablet · web</div>
+        <div className="text-[10px] uppercase tracking-[0.14em] text-white/35">
+          mobile · tablet · web
+        </div>
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2">
@@ -415,34 +396,41 @@ function Gallery({
           <motion.button
             key={x.src}
             type="button"
-            whileHover={{ y: -4 }}
-            transition={{ duration: 0.25, ease: EASE }}
-            className="group relative overflow-hidden rounded-xl border border-white/10 bg-black/30 text-left"
+            whileHover={{ y: -2 }}
+            transition={{ duration: 0.22, ease: EASE }}
+            className="group relative overflow-hidden rounded-xl border border-[rgba(242,239,231,.08)] bg-[#0B0B0F] text-left shadow-[0_14px_34px_rgba(0,0,0,.38)] ring-1 ring-inset ring-[rgba(200,195,184,.045)] transition hover:border-[rgba(200,195,184,.22)] hover:shadow-[0_20px_48px_rgba(0,0,0,.55)]"
             onClick={() => onOpen?.(x)}
           >
             <div
-              className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               style={{
                 background: brandAccent
-                  ? `radial-gradient(650px 260px at 50% 0%, rgba(225,16,45,.22), transparent 60%)`
+                  ? `radial-gradient(520px 220px at 50% 0%, rgba(200,195,184,.13), transparent 64%)`
                   : "",
               }}
             />
-            <div className="relative h-44 w-full sm:h-48 md:h-52 lg:h-44">
+
+            <div className="relative h-48 w-full overflow-hidden bg-black sm:h-52 md:h-56 lg:h-48">
               <Image
                 src={x.src}
                 alt={x.alt}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover"
+                className="object-cover transition duration-500 group-hover:scale-[1.018]"
               />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_58%,rgba(0,0,0,.42))]" />
             </div>
 
-            <div className="flex items-center justify-between gap-2 border-t border-white/10 bg-black/35 px-3 py-2 text-xs">
-              <span className="text-white/75">{x.label}</span>
-              <span className="inline-flex items-center gap-2 text-white/50">
-                <span className="h-1.5 w-1.5 rounded-full bg-[rgba(225,16,45,.95)]" />
-                Hermit
+            <div className="flex items-center justify-between gap-2 border-t border-[rgba(242,239,231,.08)] bg-black/45 px-3 py-2 text-xs">
+              <span className="max-w-[70%] truncate text-white/70">
+                {x.label}
+              </span>
+
+              <span className="inline-flex items-center gap-2 text-white/40">
+                <span className="h-1 w-1 rounded-full bg-[rgba(200,195,184,.75)]" />
+                <span className="font-[family-name:var(--font-brand)] tracking-[0.06em]">
+                  Hermit
+                </span>
               </span>
             </div>
           </motion.button>
@@ -461,7 +449,7 @@ const PROJECT_TABS = [
     bullets: ["Trazabilidad + historial", "PDFs listos auditoría"],
     href: "https://ot-frontend-pro.onrender.com",
     repo: "https://github.com/omargonza/sistema-mantenimiento-electrico.git",
-    accent: "rgba(225,16,45,.18)",
+    accent: "rgba(200,195,184,.18)",
   },
   {
     key: "yoquet",
@@ -483,7 +471,7 @@ const PROJECT_TABS = [
     bullets: ["Responsive real", "CTA + performance/SEO"],
     href: "https://omargonza.github.io/online/",
     repo: "https://github.com/omargonza/online.git",
-    accent: "rgba(225,16,45,.12)",
+    accent: "rgba(142,138,131,.12)",
   },
 ] as const;
 
@@ -592,7 +580,7 @@ function ProjectTabsPreview() {
                 onClick={() => setActive(t.key)}
                 className={[
                   "relative z-10 h-[30px] w-[92px] rounded-full text-xs transition",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(225,16,45,0.7)] focus-visible:ring-offset-2 focus-visible:ring-offset-black/60",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgba(200,195,184,0.7)] focus-visible:ring-offset-2 focus-visible:ring-offset-black/60",
                   isOn ? "text-white/90" : "text-white/60 hover:text-white/80",
                 ].join(" ")}
               >
@@ -658,7 +646,7 @@ function ProjectTabsPreview() {
         <ul className="mt-3 space-y-2 text-xs text-white/65">
           {current.bullets.map((b) => (
             <li key={b} className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-[rgba(225,16,45,.95)]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[rgba(200,195,184,.95)]" />
               {b}
             </li>
           ))}
@@ -691,7 +679,7 @@ function ProjectTabsPreview() {
       {/* progress bar */}
       <div className="relative mt-4 h-[2px] overflow-hidden rounded-full bg-white/10">
         <motion.i
-          className="block h-full bg-[rgba(225,16,45,.85)]"
+          className="block h-full bg-[rgba(200,195,184,.85)]"
           key={String(active) + String(paused) + String(shouldReduceMotion)}
           initial={{ width: "0%" }}
           animate={{ width: paused || shouldReduceMotion ? "35%" : "100%" }}
@@ -972,9 +960,9 @@ export default function Page() {
           className="absolute inset-0 opacity-[0.95]"
           style={{
             backgroundImage: `
-              radial-gradient(1100px 500px at 20% 0%, rgba(225,16,45,.22), transparent 60%),
+              radial-gradient(1100px 500px at 20% 0%, rgba(200,195,184,.22), transparent 60%),
               radial-gradient(900px 420px at 80% 10%, rgba(255,255,255,.06), transparent 60%),
-              radial-gradient(1200px 600px at 50% 110%, rgba(225,16,45,.12), transparent 55%),
+              radial-gradient(1200px 600px at 50% 110%, rgba(142,138,131,.12), transparent 55%),
               linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.55) 40%, rgba(0,0,0,.85))
             `,
           }}
@@ -994,7 +982,7 @@ export default function Page() {
           <Link
             href="/"
             aria-label="Volver al inicio"
-            className="group flex items-center gap-3 rounded-xl outline-none transition hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[rgba(225,16,45,0.8)] focus-visible:ring-offset-2 focus-visible:ring-offset-black/60"
+            className="group flex items-center gap-3 rounded-xl outline-none transition hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[rgba(200,195,184,0.8)] focus-visible:ring-offset-2 focus-visible:ring-offset-black/60"
           >
             {/* Logo (SVG en /public) */}
             <div className="relative h-9 w-9 overflow-hidden rounded-xl border border-white/10 bg-white/[0.06] transition group-hover:border-white/20">
@@ -1008,13 +996,13 @@ export default function Page() {
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
               {/* glow rojo sutil en hover */}
-              <div className="pointer-events-none absolute -left-4 top-2 h-12 w-12 rotate-12 bg-[rgba(225,16,45,.18)] blur-xl opacity-0 transition group-hover:opacity-100" />
+              <div className="pointer-events-none absolute -left-4 top-2 h-12 w-12 rotate-12 bg-[rgba(200,195,184,.18)] blur-xl opacity-0 transition group-hover:opacity-100" />
             </div>
 
             <div className="leading-tight">
-              <div className="text-sm font-semibold">
+              <div className="text-sm font-semibold font-[family-name:var(--font-brand)] tracking-[0.06em]">
                  Hermit
-              </div>
+               </div>
               <div className="text-xs text-white/55">{ROL}</div>
             </div>
           </Link>
@@ -1059,7 +1047,7 @@ export default function Page() {
             <div className="spotlight" />
 
             <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/[0.06]" />
-            <div className="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full bg-[rgba(225,16,45,.22)] blur-3xl" />
+            <div className="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full bg-[rgba(200,195,184,.22)] blur-3xl" />
             <div className="pointer-events-none absolute -right-28 top-16 h-72 w-72 rounded-full bg-white/[0.07] blur-3xl" />
 
             <div className="grid gap-10 lg:grid-cols-[1.15fr_.85fr] lg:items-start">
@@ -1072,34 +1060,29 @@ export default function Page() {
                     <MapPin className="h-3.5 w-3.5" />
                     {UBICACION}
                   </span>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/25 px-3 py-1 text-xs text-white/70">
-                    <Sparkles className="h-3.5 w-3.5 text-[rgba(225,16,45,1)]" />
-                    Disponible para proyectos freelance (remoto)
-                  </span>
                 </motion.div>
-                {BRAND} —{" "}
-                <span className="text-[rgba(225,16,45,1)]">
-                  Backend Python/Django (Junior)
-                </span>
-                <br />
-                Software operativo, pensado para uso real.
+                <h1 className="text-4xl font-bold sm:text-5xl lg:text-6xl font-[family-name:var(--font-brand)] tracking-[0.06em]">
+                <span className="font-[family-name:var(--font-brand)] tracking-[0.06em]">Hermit</span>
+                </h1>
+                <div className="mt-2 text-xl text-white/80 sm:text-2xl">
+                  Sistemas operativos para procesos reales.
+                </div>
+                <div className="mt-1 text-sm text-white/50">
+                  Full Stack Developer
+                </div>
                 <motion.p
                   variants={item}
                   className="mt-4 max-w-2xl text-[15px] leading-7 text-white/72"
                 >
-                   Soy {NOMBRE}. Desarrollo sistemas web para mantenimiento,
-                   trazabilidad, dashboards, e-commerce y herramientas
-                   internas pensadas para uso real. Mi diferencial es la
-                   experiencia operativa en industria: pienso en trazabilidad,
-                   historial, evidencias y procesos claros para que el sistema se
-                   use en campo sin fricción.
+                   Desarrollo software para mantenimiento, trazabilidad y operaciones.
+                   También e-commerce y landing pages pensadas para uso real.
                 </motion.p>
                 <motion.div
                   variants={item}
                   className="mt-7 grid gap-3 sm:grid-cols-2"
                 >
                   <MagneticButton
-                    className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-[rgba(225,16,45,1)] px-4 py-3 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(225,16,45,.25)] transition hover:brightness-110 active:brightness-95"
+                    className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-[#C8C3B8] px-4 py-3 text-sm font-semibold text-[#07070A] shadow-[0_18px_50px_rgba(200,195,184,.20)] ring-1 ring-[rgba(242,239,231,.18)] transition hover:shadow-[0_22px_65px_rgba(200,195,184,.28)] hover:-translate-y-0.5 active:translate-y-0"
                     href={mailto}
                     ariaLabel="Contactar por email"
                   >
@@ -1108,17 +1091,15 @@ export default function Page() {
                     <ArrowUpRight className="h-4 w-4 opacity-80 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </MagneticButton>
 
-                  <MagneticButton
-                    className="group inline-flex items-center justify-center gap-2 rounded-2xl border border-white/12 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-white/90 transition hover:border-white/20 hover:bg-white/[0.06]"
-                    href={CV_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    ariaLabel="Descargar CV"
+                  <button
+                    type="button"
+                    onClick={() => document.getElementById('proyectos')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="group inline-flex items-center justify-center gap-2 rounded-2xl border border-[rgba(242,239,231,.14)] bg-white/[0.04] px-4 py-3 text-sm font-semibold text-[#F2EFE7] transition hover:border-[rgba(242,239,231,.24)] hover:bg-white/[0.08]"
+                    aria-label="Ver proyectos"
                   >
-                    <Download className="h-4 w-4" />
-                    Descargar CV
+                    Ver proyectos
                     <ArrowUpRight className="h-4 w-4 opacity-70 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </MagneticButton>
+                  </button>
                 </motion.div>
                 <motion.div
                   variants={item}
@@ -1126,14 +1107,11 @@ export default function Page() {
                 >
                   {[
                     "Python",
-                    "Node.js",
-                    "Express",
+                    "Django",
                     "React",
-                    "SQL",
-                    "MongoDB",
-                    "Git/GitHub",
-                    "Tailwind",
-                    "Vite",
+                    "PostgreSQL",
+                    "APIs",
+                    "Deploy",
                   ].map((t) => (
                     <span
                       key={t}
@@ -1147,51 +1125,53 @@ export default function Page() {
                   variants={item}
                   className="mt-6 grid gap-3 sm:grid-cols-3"
                 >
-                  {/* Sistemas operativos (industrial) */}
-                  <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/25 p-4">
+                  {/* Sistemas operativos */}
+                  <div className="relative overflow-hidden rounded-2xl border border-[rgba(242,239,231,0.12)] bg-[#111116] p-4 shadow-[0_18px_55px_rgba(0,0,0,.55)] ring-1 ring-[rgba(242,239,231,0.04)]">
+                    {/* Emergence glow */}
+                    <div className="pointer-events-none absolute -bottom-10 left-1/2 h-10 w-[30%] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(200,195,184,.18),rgba(200,195,184,.07)_30%,transparent_70%)] blur-2xl opacity-40 transition-all duration-500 ease-out group-hover:w-[58%] group-hover:opacity-70" />
                     <div className="text-xs uppercase tracking-widest text-white/55">
                       Sistemas operativos
                     </div>
                     <div className="mt-2 text-sm font-semibold text-white/90">
-                      OTs · Historial · Evidencias
+                      Mantenimiento, historial, evidencias y reportes.
                     </div>
                     <div className="mt-2 text-xs leading-5 text-white/65">
-                      Flujos para campo/operación: trazabilidad, historial por
-                      activo, fotos y reportes listos para auditoría y
-                      seguimiento.
+                      Trazabilidad, historial por activo, fotos y reportes
+                      listos para auditoría y seguimiento.
                     </div>
-                    <div className="mt-3 h-[2px] w-10 rounded-full bg-[rgba(225,16,45,.95)]" />
+                    <div className="mt-3 h-[2px] w-10 rounded-full bg-[rgba(200,195,184,.95)]" />
                   </div>
 
-                  {/* E-commerce (cuando el proyecto lo requiere) */}
-                  <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/25 p-4">
-                    <div className="text-xs uppercase tracking-widest text-white/55">
+                   {/* E-commerce */}
+                   <div className="group relative overflow-hidden rounded-2xl border border-[rgba(242,239,231,0.12)] bg-[#111116] p-4 shadow-[0_18px_55px_rgba(0,0,0,.55)] ring-1 ring-[rgba(242,239,231,.04)]">
+                     <div className="pointer-events-none absolute -bottom-10 left-1/2 h-10 w-[30%] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(200,195,184,.18),rgba(200,195,184,.07)_30%,transparent_70%)] blur-2xl opacity-40 transition-all duration-500 ease-out group-hover:w-[58%] group-hover:opacity-70" />
+                     <div className="text-xs uppercase tracking-widest text-white/55">
                       E-commerce
                     </div>
                     <div className="mt-2 text-sm font-semibold text-white/90">
-                      Catálogo · Carrito · Deploy
+                      Catálogos, carrito y experiencia de compra.
                     </div>
                     <div className="mt-2 text-xs leading-5 text-white/65">
-                      Tienda online completa: catálogo, filtros, carrito,
-                      estados vacíos y publicación. Arquitectura separada
-                      front/back si conviene.
+                      Tienda online: catálogo, filtros, carrito,
+                      estados vacíos y publicación.
                     </div>
-                    <div className="mt-3 h-[2px] w-10 rounded-full bg-[rgba(225,16,45,.95)]" />
+                    <div className="mt-3 h-[2px] w-10 rounded-full bg-[rgba(200,195,184,.95)]" />
                   </div>
 
-                  {/* Landing (captación rápida) */}
-                  <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/25 p-4">
-                    <div className="text-xs uppercase tracking-widest text-white/55">
-                      Landing & captación
+                   {/* Landing pages */}
+                   <div className="group relative overflow-hidden rounded-2xl border border-[rgba(242,239,231,0.12)] bg-[#111116] p-4 shadow-[0_18px_55px_rgba(0,0,0,.55)] ring-1 ring-[rgba(242,239,231,.04)]">
+                     <div className="pointer-events-none absolute -bottom-10 left-1/2 h-10 w-[30%] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(200,195,184,.18),rgba(200,195,184,.07)_30%,transparent_70%)] blur-2xl opacity-40 transition-all duration-500 ease-out group-hover:w-[58%] group-hover:opacity-70" />
+                     <div className="text-xs uppercase tracking-widest text-white/55">
+                      Landing pages
                     </div>
                     <div className="mt-2 text-sm font-semibold text-white/90">
-                      Landing rápida y clara
+                      Sitios claros, rápidos y orientados a conversión.
                     </div>
                     <div className="mt-2 text-xs leading-5 text-white/65">
-                      Landing responsive con jerarquía visual, CTAs, performance
-                      y SEO básico. Lista para publicar y compartir.
+                      Landing responsive con jerarquía visual, CTAs,
+                      performance y SEO básico.
                     </div>
-                    <div className="mt-3 h-[2px] w-10 rounded-full bg-[rgba(225,16,45,.95)]" />
+                    <div className="mt-3 h-[2px] w-10 rounded-full bg-[rgba(200,195,184,.95)]" />
                   </div>
                 </motion.div>
                 <motion.div
@@ -1208,21 +1188,6 @@ export default function Page() {
                 className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1"
               >
                 <ProjectTabsPreview />
-                <IconChip
-                  icon={Code2}
-                  title="Forma de trabajo"
-                  value="Iteración corta · entregas claras"
-                />
-                <IconChip
-                  icon={Layers}
-                  title="Calidad"
-                  value="Mantenibilidad · consistencia · DX"
-                />
-                <IconChip
-                  icon={ShieldCheck}
-                  title="Producción"
-                  value="Estable · sin sorpresas"
-                />
               </motion.div>
             </div>
           </motion.div>
@@ -1290,7 +1255,7 @@ export default function Page() {
               variants={item}
               className="mt-7 grid gap-6 lg:grid-cols-2"
             >
-              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-5 shadow-[0_18px_55px_rgba(0,0,0,.55)]">
+              <div className="relative overflow-hidden rounded-3xl border border-[rgba(242,239,231,0.12)] bg-[#111116] p-5 shadow-[0_24px_80px_rgba(0,0,0,.65)] ring-1 ring-[rgba(242,239,231,0.06)]">
                 <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-white/50">
                   <Factory className="h-4 w-4 text-white/45" />
                   Experiencia operativa
@@ -1321,7 +1286,7 @@ export default function Page() {
       <SectionDivider />
 
       {/* PROYECTOS */}
-      <section className="px-4 py-12 sm:px-6">
+      <section id="proyectos" className="px-4 py-12 sm:px-6">
         <div className="mx-auto max-w-6xl">
           <motion.div
             initial="hidden"
@@ -1342,145 +1307,162 @@ export default function Page() {
               </p>
             </motion.div>
 
-            <div className="mt-7 grid gap-6 lg:grid-cols-3">
-              {projects.map((p) => (
-                <motion.article
-                  key={p.titulo}
-                  variants={item}
-                  whileHover={{ y: -6 }}
-                  transition={{ duration: 0.25, ease: EASE }}
-                  className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-5 shadow-[0_18px_55px_rgba(0,0,0,.55)]"
-                >
-                  <div className="pointer-events-none absolute inset-0">
-                    <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-white/[0.06] blur-3xl" />
-                    <div className="absolute -left-24 top-16 h-64 w-64 rounded-full bg-[rgba(225,16,45,.16)] blur-3xl" />
-                  </div>
+             <div className="mt-7 grid gap-8 lg:grid-cols-3">
+  {projects.map((p) => (
+    <motion.article
+      key={p.titulo}
+      variants={item}
+      whileHover={{ y: -2 }}
+      transition={{ duration: 0.25, ease: EASE }}
+      className="group relative overflow-visible rounded-3xl transition-all duration-500"
+      style={{ transformOrigin: "bottom center" }}
+    >
+      {/* Deep structural shadow */}
+      <div className="pointer-events-none absolute -bottom-10 left-1/2 z-0 h-16 w-[72%] -translate-x-1/2 rounded-full bg-black/80 blur-3xl opacity-75 transition-all duration-500 ease-out group-hover:h-24 group-hover:w-[104%] group-hover:opacity-95" />
 
-                  <div className="relative">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <div className="text-base font-semibold text-white/95">
-                          {p.titulo}
-                        </div>
-                        <div className="mt-1 text-xs text-white/60">
-                          {p.subtitulo}
-                        </div>
-                      </div>
-                      <div className="h-10 w-10 rounded-2xl border border-white/10 bg-white/[0.04]" />
-                    </div>
+      {/* Metallic emergence base */}
+      <div className="pointer-events-none absolute -bottom-7 left-1/2 z-0 h-12 w-[42%] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(200,195,184,.34),rgba(200,195,184,.14)_34%,rgba(200,195,184,.04)_52%,transparent_76%)] blur-2xl opacity-75 transition-all duration-500 ease-out group-hover:h-20 group-hover:w-[92%] group-hover:opacity-100 group-hover:blur-3xl" />
 
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {p.stack.map((s) => (
-                        <span
-                          key={s}
-                          className="rounded-full border border-white/10 bg-black/25 px-3 py-1 text-xs text-white/70"
-                        >
-                          {s}
-                        </span>
-                      ))}
-                    </div>
+      {/* Inner card */}
+      <div className="relative z-10 overflow-hidden rounded-3xl border border-[rgba(242,239,231,.15)] bg-[linear-gradient(180deg,rgba(242,239,231,.055),rgba(17,17,22,.96)_18%,#111116_100%)] p-5 shadow-[0_32px_110px_rgba(0,0,0,.78),inset_0_1px_0_rgba(242,239,231,.09)] ring-1 ring-[rgba(242,239,231,.06)] transition-all duration-500 group-hover:border-[rgba(200,195,184,.36)] group-hover:shadow-[0_44px_140px_rgba(0,0,0,.92),inset_0_1px_0_rgba(242,239,231,.13)]">
+        {/* Top highlight */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(242,239,231,.22)] to-transparent" />
 
-                    <ul className="mt-4 space-y-2 text-sm text-white/72">
-                      {p.puntos.map((b) => (
-                        <Bullet key={b}>{b}</Bullet>
-                      ))}
-                    </ul>
+        {/* Internal depth */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_340px_at_50%_-12%,rgba(242,239,231,.095),transparent_62%)] opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
 
-                    {/* Bloque: rol / problema / aporte / resultado / equipo */}
-                    <div className="mt-5 grid gap-4 rounded-2xl border border-white/10 bg-black/25 p-4">
-                      <div>
-                        <Label>Mi rol</Label>
-                        <div className="mt-1 text-sm text-white/85">
-                          {p.rol}
-                        </div>
-                      </div>
+        {/* Ambient internal glows */}
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-white/[0.055] blur-3xl" />
+          <div className="absolute -left-24 top-16 h-64 w-64 rounded-full bg-[rgba(200,195,184,.15)] blur-3xl" />
+          <div className="absolute bottom-0 left-1/2 h-32 w-[70%] -translate-x-1/2 rounded-full bg-[rgba(200,195,184,.045)] blur-3xl" />
+        </div>
 
-                      <div className="grid gap-4 sm:grid-cols-2">
-                        <div>
-                          <Label>Problema</Label>
-                          <ul className="mt-2 space-y-2 text-sm text-white/72">
-                            {p.problema.map((x) => (
-                              <Bullet key={x}>{x}</Bullet>
-                            ))}
-                          </ul>
-                        </div>
-
-                        <div>
-                          <Label>Lo que hice</Label>
-                          <ul className="mt-2 space-y-2 text-sm text-white/72">
-                            {p.aporte.map((x) => (
-                              <Bullet key={x}>{x}</Bullet>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-
-                      <div className="grid gap-4 sm:grid-cols-2">
-                        <div>
-                          <Label>Resultado</Label>
-                          <ul className="mt-2 space-y-2 text-sm text-white/72">
-                            {p.resultado.map((x) => (
-                              <Bullet key={x}>{x}</Bullet>
-                            ))}
-                          </ul>
-                        </div>
-
-                        <div>
-                          <Label>Trabajo en equipo</Label>
-                          <ul className="mt-2 space-y-2 text-sm text-white/72">
-                            {p.equipo.map((x) => (
-                              <Bullet key={x}>{x}</Bullet>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      <MagneticButton
-                        className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-white/85 transition hover:border-white/20 hover:bg-white/[0.06]"
-                        href={p.demo}
-                        target="_blank"
-                        rel="noreferrer"
-                        ariaLabel="Abrir demo"
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                        Ver demo <ArrowUpRight className="h-4 w-4 opacity-60" />
-                      </MagneticButton>
-
-                      <MagneticButton
-                        className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-white/85 transition hover:border-white/20 hover:bg-white/[0.06]"
-                        href={p.repo}
-                        target="_blank"
-                        rel="noreferrer"
-                        ariaLabel="Abrir repo"
-                      >
-                        <Github className="h-4 w-4" />
-                        Repo <ArrowUpRight className="h-4 w-4 opacity-60" />
-                      </MagneticButton>
-
-                      {p.repo2 ? (
-                        <MagneticButton
-                          className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-white/85 transition hover:border-white/20 hover:bg-white/[0.06]"
-                          href={p.repo2}
-                          target="_blank"
-                          rel="noreferrer"
-                          ariaLabel="Abrir repo frontend"
-                        >
-                          <Github className="h-4 w-4" />
-                          Repo front{" "}
-                          <ArrowUpRight className="h-4 w-4 opacity-60" />
-                        </MagneticButton>
-                      ) : null}
-                    </div>
-
-                    <div className="mt-5">
-                      <Gallery items={p.gallery} onOpen={setLightbox} />
-                    </div>
-                  </div>
-                </motion.article>
-              ))}
+        <div className="relative">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <div className="text-base font-semibold text-white/95">
+                {p.titulo}
+              </div>
+              <div className="mt-1 text-xs text-white/60">
+                {p.subtitulo}
+              </div>
             </div>
+
+            <div className="h-10 w-10 rounded-2xl border border-[rgba(242,239,231,.12)] bg-white/[0.04] shadow-[inset_0_1px_0_rgba(242,239,231,.08)]" />
+          </div>
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            {p.stack.map((s) => (
+              <span
+                key={s}
+                className="rounded-full border border-[rgba(242,239,231,.11)] bg-black/30 px-3 py-1 text-xs text-white/70"
+              >
+                {s}
+              </span>
+            ))}
+          </div>
+
+          <ul className="mt-4 space-y-2 text-sm text-white/72">
+            {p.puntos.map((b) => (
+              <Bullet key={b}>{b}</Bullet>
+            ))}
+          </ul>
+
+          {/* Bloque: rol / problema / aporte / resultado / equipo */}
+          <div className="mt-5 grid gap-4 rounded-2xl border border-[rgba(242,239,231,.11)] bg-[#0B0B0F]/80 p-4 shadow-[inset_0_1px_0_rgba(242,239,231,.06)]">
+            <div>
+              <Label>Mi rol</Label>
+              <div className="mt-1 text-sm text-white/85">{p.rol}</div>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <Label>Problema</Label>
+                <ul className="mt-2 space-y-2 text-sm text-white/72">
+                  {p.problema.map((x) => (
+                    <Bullet key={x}>{x}</Bullet>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <Label>Lo que hice</Label>
+                <ul className="mt-2 space-y-2 text-sm text-white/72">
+                  {p.aporte.map((x) => (
+                    <Bullet key={x}>{x}</Bullet>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <Label>Resultado</Label>
+                <ul className="mt-2 space-y-2 text-sm text-white/72">
+                  {p.resultado.map((x) => (
+                    <Bullet key={x}>{x}</Bullet>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <Label>Trabajo en equipo</Label>
+                <ul className="mt-2 space-y-2 text-sm text-white/72">
+                  {p.equipo.map((x) => (
+                    <Bullet key={x}>{x}</Bullet>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-5 flex flex-wrap gap-2">
+            <MagneticButton
+              className="inline-flex items-center gap-2 rounded-xl border border-[rgba(242,239,231,.12)] bg-white/[0.045] px-3 py-2 text-sm text-white/85 transition hover:border-[rgba(200,195,184,.28)] hover:bg-white/[0.075]"
+              href={p.demo}
+              target="_blank"
+              rel="noreferrer"
+              ariaLabel="Abrir demo"
+            >
+              <ExternalLink className="h-4 w-4" />
+              Ver demo <ArrowUpRight className="h-4 w-4 opacity-60" />
+            </MagneticButton>
+
+            <MagneticButton
+              className="inline-flex items-center gap-2 rounded-xl border border-[rgba(242,239,231,.12)] bg-white/[0.045] px-3 py-2 text-sm text-white/85 transition hover:border-[rgba(200,195,184,.28)] hover:bg-white/[0.075]"
+              href={p.repo}
+              target="_blank"
+              rel="noreferrer"
+              ariaLabel="Abrir repo"
+            >
+              <Github className="h-4 w-4" />
+              Repo <ArrowUpRight className="h-4 w-4 opacity-60" />
+            </MagneticButton>
+
+            {p.repo2 ? (
+              <MagneticButton
+                className="inline-flex items-center gap-2 rounded-xl border border-[rgba(242,239,231,.12)] bg-white/[0.045] px-3 py-2 text-sm text-white/85 transition hover:border-[rgba(200,195,184,.28)] hover:bg-white/[0.075]"
+                href={p.repo2}
+                target="_blank"
+                rel="noreferrer"
+                ariaLabel="Abrir repo frontend"
+              >
+                <Github className="h-4 w-4" />
+                Repo front{" "}
+                <ArrowUpRight className="h-4 w-4 opacity-60" />
+              </MagneticButton>
+            ) : null}
+          </div>
+
+          <div className="mt-5 rounded-2xl border border-[rgba(242,239,231,.12)] bg-[#0B0B0F]/80 p-2 shadow-[0_18px_45px_rgba(0,0,0,.45)] ring-1 ring-inset ring-[rgba(200,195,184,.08)]">
+            <Gallery items={p.gallery} onOpen={setLightbox} />
+          </div>
+        </div>
+      </div>
+    </motion.article>
+  ))}
+</div>
           </motion.div>
         </div>
       </section>
@@ -1497,7 +1479,7 @@ export default function Page() {
             variants={container}
             className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-6 shadow-[0_18px_60px_rgba(0,0,0,.55)] sm:p-8 md:p-10"
           >
-            <div className="pointer-events-none absolute -left-28 -bottom-28 h-80 w-80 rounded-full bg-[rgba(225,16,45,.18)] blur-3xl" />
+            <div className="pointer-events-none absolute -left-28 -bottom-28 h-80 w-80 rounded-full bg-[rgba(200,195,184,.18)] blur-3xl" />
             <div className="pointer-events-none absolute -right-28 top-12 h-72 w-72 rounded-full bg-white/[0.06] blur-3xl" />
 
             <motion.div
@@ -1526,7 +1508,7 @@ export default function Page() {
               className="mt-6 grid gap-3 sm:grid-cols-2 lg:flex lg:flex-wrap"
             >
               <MagneticButton
-                className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-[rgba(225,16,45,1)] px-4 py-3 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(225,16,45,.25)] transition hover:brightness-110 active:brightness-95"
+                className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-[#C8C3B8] px-4 py-3 text-sm font-semibold text-white shadow-[0_16px_40px_rgba(200,195,184,.25)] transition hover:brightness-110 active:brightness-95"
                 href={mailto}
                 ariaLabel="Enviar email"
               >
@@ -1536,7 +1518,7 @@ export default function Page() {
               </MagneticButton>
 
               <MagneticButton
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/12 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-white/90 transition hover:border-white/20 hover:bg-white/[0.06]"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[rgba(242,239,231,.14)] bg-white/[0.04] px-4 py-3 text-sm font-semibold text-[#F2EFE7] transition hover:border-[rgba(242,239,231,.24)] hover:bg-white/[0.08]"
                 href={LINKEDIN}
                 target="_blank"
                 rel="noreferrer"
@@ -1547,7 +1529,7 @@ export default function Page() {
               </MagneticButton>
 
               <MagneticButton
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/12 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-white/90 transition hover:border-white/20 hover:bg-white/[0.06]"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[rgba(242,239,231,.14)] bg-white/[0.04] px-4 py-3 text-sm font-semibold text-[#F2EFE7] transition hover:border-[rgba(242,239,231,.24)] hover:bg-white/[0.08]"
                 href={GITHUB}
                 target="_blank"
                 rel="noreferrer"
@@ -1558,7 +1540,7 @@ export default function Page() {
               </MagneticButton>
 
               <MagneticButton
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/12 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-white/90 transition hover:border-white/20 hover:bg-white/[0.06]"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[rgba(242,239,231,.14)] bg-white/[0.04] px-4 py-3 text-sm font-semibold text-[#F2EFE7] transition hover:border-[rgba(242,239,231,.24)] hover:bg-white/[0.08]"
                 href={CV_URL}
                 target="_blank"
                 rel="noreferrer"

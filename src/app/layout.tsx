@@ -1,5 +1,13 @@
 import type { Metadata, Viewport } from "next";
+import { Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+  variable: "--font-brand",
+});
 
 const SITE_NAME = "Hermit — Portfolio";
 const DESCRIPTION =
@@ -111,7 +119,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className="noise">{children}</body>
+      <body className={`${cormorant.variable} noise`}>{children}</body>
     </html>
   );
 }
