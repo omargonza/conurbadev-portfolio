@@ -10,6 +10,7 @@ import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
+import PresentationIntro from "@/components/PresentationIntro";
 import {
   Github,
   ExternalLink,
@@ -947,11 +948,12 @@ export default function Page() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [scrollY]);
 
-  return (
-    <div className="min-h-screen bg-[#07070a] text-white">
-      {/* Fondo industrial: glow + grano */}
-      <div className="bg-ambient" />
-      <motion.div
+   return (
+     <div className="min-h-screen bg-[#07070a] text-white">
+       <PresentationIntro />
+       {/* Fondo industrial: glow + grano */}
+       <div className="bg-ambient" />
+       <motion.div
         aria-hidden
         className="pointer-events-none fixed inset-0 -z-10"
         style={{ y: bgYSpring }}
@@ -979,33 +981,20 @@ export default function Page() {
       {/* Topbar */}
       <header className="sticky top-0 z-40 border-b border-white/5 bg-black/35 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-          <Link
-            href="/"
-            aria-label="Volver al inicio"
-            className="group flex items-center gap-3 rounded-xl outline-none transition hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[rgba(200,195,184,0.8)] focus-visible:ring-offset-2 focus-visible:ring-offset-black/60"
-          >
-            {/* Logo (SVG en /public) */}
-            <div className="relative h-9 w-9 overflow-hidden rounded-xl border border-white/10 bg-white/[0.06] transition group-hover:border-white/20">
-              <Image
-                src="/brand/conurbadev-logo-transparent.png"
-                alt="Logo Hermit"
-                fill
-                sizes="36px"
-                className="object-contain"
-                priority
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
-              {/* glow rojo sutil en hover */}
-              <div className="pointer-events-none absolute -left-4 top-2 h-12 w-12 rotate-12 bg-[rgba(200,195,184,.18)] blur-xl opacity-0 transition group-hover:opacity-100" />
-            </div>
-
-            <div className="leading-tight">
-              <div className="text-sm font-semibold font-[family-name:var(--font-brand)] tracking-[0.06em]">
-                 Hermit
-               </div>
-              <div className="text-xs text-white/55">{ROL}</div>
-            </div>
-          </Link>
+           <Link
+              href="/"
+              aria-label="Volver al inicio"
+              className="group flex items-center gap-3 rounded-xl outline-none transition hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[rgba(200,195,184,0.8)] focus-visible:ring-offset-2 focus-visible:ring-offset-black/60"
+            >
+              <div className="leading-tight">
+                <div className="font-[family-name:var(--font-brand)] text-[18px] font-semibold tracking-[0.10em] text-[#F2EFE7] md:text-[20px]">
+                  HERMIT
+                </div>
+                <div className="mt-0.5 text-xs text-white/55 md:text-[13px]">
+                  Full Stack Developer · Sistemas para operación real
+                </div>
+              </div>
+            </Link>
 
           <div className="flex items-center gap-2">
             <MagneticButton
@@ -1551,10 +1540,15 @@ export default function Page() {
               </MagneticButton>
             </motion.div>
 
-            <div className="mt-8 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            <div className="mt-5 text-xs text-white/45">
-              © {new Date().getFullYear()} {BRAND} — {ROL}
-            </div>
+             <div className="mt-8 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+             <div className="mt-5 flex items-center justify-between">
+                <div className="font-[family-name:var(--font-brand)] text-sm font-semibold tracking-[0.14em] text-[#F2EFE7]/75">
+                  HERMIT
+                </div>
+                <div className="text-xs text-white/45">
+                  © {new Date().getFullYear()} {BRAND} — {ROL}
+                </div>
+              </div>
           </motion.div>
         </div>
       </section>
